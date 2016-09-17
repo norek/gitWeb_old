@@ -102,7 +102,7 @@ gulp.task("build", ['clean'], function () {
 
 gulp.task("watch", ['clean', 'build'], function () {
     gulp.watch(sassPath, ["sass"]);
-    gulp.watch(scriptsPath, ["typescript", "tslint"]);
+    gulp.watch(scriptsPath, ["typescript"]);
     gulp.watch(templatesPath, ["templates"]);
     gulp.watch(imagesPath, ["images"]);
 });

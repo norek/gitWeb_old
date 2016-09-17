@@ -18,12 +18,13 @@ System.register(["@angular/core"], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
+            //import { ROUTER_DIRECTIVES } from "@angular/router";
             let AppComponent = class AppComponent {
             };
             AppComponent = __decorate([
                 core_1.Component({
                     selector: "app",
-                    template: `<router-outlet></router-outlet>`,
+                    template: `<router-outlet></router-outlet>`
                 }), 
                 __metadata('design:paramtypes', [])
             ], AppComponent);
@@ -31,4 +32,4 @@ System.register(["@angular/core"], function(exports_1, context_1) {
         }
     }
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hcHAuY29tcG9uZW50cy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7OztZQU1BO1lBQTRCLENBQUM7WUFKN0I7Z0JBQUMsZ0JBQVMsQ0FBQztvQkFDUCxRQUFRLEVBQUUsS0FBSztvQkFDZixRQUFRLEVBQUUsaUNBQWlDO2lCQUM5QyxDQUFDOzs0QkFBQTtZQUNGLHVDQUE2QixDQUFBIiwiZmlsZSI6ImFwcC9hcHAuY29tcG9uZW50cy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbXBvbmVudCB9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XHJcblxyXG5AQ29tcG9uZW50KHtcclxuICAgIHNlbGVjdG9yOiBcImFwcFwiLFxyXG4gICAgdGVtcGxhdGU6IGA8cm91dGVyLW91dGxldD48L3JvdXRlci1vdXRsZXQ+YCxcclxufSlcclxuZXhwb3J0IGNsYXNzIEFwcENvbXBvbmVudCB7IH0iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hcHAuY29tcG9uZW50cy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7OztZQUNBLHNEQUFzRDtZQVN0RDtZQUE0QixDQUFDO1lBUDdCO2dCQUFDLGdCQUFTLENBQUM7b0JBQ1AsUUFBUSxFQUFFLEtBQUs7b0JBQ2YsUUFBUSxFQUFFLGlDQUFpQztpQkFFOUMsQ0FBQzs7NEJBQUE7WUFHRix1Q0FBNkIsQ0FBQSIsImZpbGUiOiJhcHAvYXBwLmNvbXBvbmVudHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDb21wb25lbnQgfSBmcm9tIFwiQGFuZ3VsYXIvY29yZVwiO1xyXG4vL2ltcG9ydCB7IFJPVVRFUl9ESVJFQ1RJVkVTIH0gZnJvbSBcIkBhbmd1bGFyL3JvdXRlclwiO1xyXG5cclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvcjogXCJhcHBcIixcclxuICAgIHRlbXBsYXRlOiBgPHJvdXRlci1vdXRsZXQ+PC9yb3V0ZXItb3V0bGV0PmBcclxuICAgIC8vZGlyZWN0aXZlczogW1JPVVRFUl9ESVJFQ1RJVkVTXVxyXG59KVxyXG5cclxuXHJcbmV4cG9ydCBjbGFzcyBBcHBDb21wb25lbnQgeyB9Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

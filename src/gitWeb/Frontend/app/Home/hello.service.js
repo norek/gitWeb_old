@@ -1,4 +1,4 @@
-System.register(["@angular/core"], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/http", 'rxjs/add/operator/map'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,26 +10,34 @@ System.register(["@angular/core"], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var AppComponent;
+    var core_1, http_1;
+    var HelloService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            }],
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (_1) {}],
         execute: function() {
-            //import { ROUTER_DIRECTIVES } from "@angular/router";
-            let AppComponent = class AppComponent {
+            let HelloService = class HelloService {
+                constructor(http) {
+                    this.http = http;
+                }
+                greet(name) {
+                    return this.http
+                        .get(`/api/hello?name=${name}`)
+                        .map(res => res.text());
+                }
             };
-            AppComponent = __decorate([
-                core_1.Component({
-                    selector: "app",
-                    template: `<router-outlet></router-outlet>`
-                }), 
-                __metadata('design:paramtypes', [])
-            ], AppComponent);
-            exports_1("AppComponent", AppComponent);
+            HelloService = __decorate([
+                core_1.Injectable(), 
+                __metadata('design:paramtypes', [http_1.Http])
+            ], HelloService);
+            exports_1("HelloService", HelloService);
         }
     }
 });
-//# sourceMappingURL=app.components.js.map
+//# sourceMappingURL=hello.service.js.map
