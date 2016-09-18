@@ -14,7 +14,7 @@ namespace gitWeb.Backend
         {
             using (var repo = new Repository(Cl_RepositoryInfo.Path))
             {
-                return Ok(string.Join(Environment.NewLine, repo.Commits.Select(d => d.Message).ToList()));
+                return Ok(repo.Commits.Select(d => new {d.Message, Id = d.Id.ToString()}).ToList());
             }
         }
 

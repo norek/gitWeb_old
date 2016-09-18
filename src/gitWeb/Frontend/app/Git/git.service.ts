@@ -2,6 +2,8 @@
 import {Injectable} from "@angular/core";
 import {Observable, } from "rxjs/Rx";
 import {Branch} from "./Model/Branch";
+import {Commit} from "../Git/Model/Commit";
+
 
 
 import 'rxjs/add/operator/map';
@@ -13,10 +15,11 @@ export class GitService {
 
     }
 
-    getLog(): Observable<string> {
+    getLog(): Observable<Commit[]> {
         return this.http
             .get("api/git/log")
-            .map(d => <string>d.text());
+            .map(b => b.json())
+            .catch((error: any) => Observable.throw(error.json().error || "Server error"));
     }
 
     getBranches() : Observable<Branch[]> {

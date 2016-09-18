@@ -6,8 +6,9 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             class Branch {
-                constructor(name) {
+                constructor(name, isRemote) {
                     this.name = name;
+                    this.isRemote = isRemote;
                 }
             }
             exports_1("Branch", Branch);

@@ -33,7 +33,8 @@ System.register(["@angular/http", "@angular/core", "rxjs/Rx", 'rxjs/add/operator
                 getLog() {
                     return this.http
                         .get("api/git/log")
-                        .map(d => d.text());
+                        .map(b => b.json())
+                        .catch((error) => Rx_1.Observable.throw(error.json().error || "Server error"));
                 }
                 getBranches() {
                     return this.http
