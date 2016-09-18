@@ -2,14 +2,17 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent}   from "./app.components";
 import {HttpModule} from "@angular/http";
+import {CommitDetailComponent} from "./commit-detail.component";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        CommitDetailComponent
     ],
     imports: [
         BrowserModule,
-        HttpModule    ],
+        HttpModule
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })
