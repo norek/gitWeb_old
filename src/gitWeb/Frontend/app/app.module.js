@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/platform-browser", "./app.components", "./home/home.component", "./app.routes", "@angular/http"], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "./commit-detail.component", "./app.component", "./commit.component", "./commit.service", "./commit/commit-search.component", "./commit/commit-search.service", './rxjs-extensions'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/platform-browser", "./app.components
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, app_components_1, home_component_1, app_routes_1, http_1;
+    var core_1, platform_browser_1, http_1, commit_detail_component_1, app_component_1, commit_component_1, commit_service_1, commit_search_component_1, commit_search_service_1;
     var AppModule;
     return {
         setters:[
@@ -20,34 +20,45 @@ System.register(["@angular/core", "@angular/platform-browser", "./app.components
             function (platform_browser_1_1) {
                 platform_browser_1 = platform_browser_1_1;
             },
-            function (app_components_1_1) {
-                app_components_1 = app_components_1_1;
-            },
-            function (home_component_1_1) {
-                home_component_1 = home_component_1_1;
-            },
-            function (app_routes_1_1) {
-                app_routes_1 = app_routes_1_1;
-            },
             function (http_1_1) {
                 http_1 = http_1_1;
-            }],
+            },
+            function (commit_detail_component_1_1) {
+                commit_detail_component_1 = commit_detail_component_1_1;
+            },
+            function (app_component_1_1) {
+                app_component_1 = app_component_1_1;
+            },
+            function (commit_component_1_1) {
+                commit_component_1 = commit_component_1_1;
+            },
+            function (commit_service_1_1) {
+                commit_service_1 = commit_service_1_1;
+            },
+            function (commit_search_component_1_1) {
+                commit_search_component_1 = commit_search_component_1_1;
+            },
+            function (commit_search_service_1_1) {
+                commit_search_service_1 = commit_search_service_1_1;
+            },
+            function (_1) {}],
         execute: function() {
             let AppModule = class AppModule {
             };
             AppModule = __decorate([
                 core_1.NgModule({
                     declarations: [
-                        app_components_1.AppComponent,
-                        home_component_1.HomeComponent
+                        app_component_1.AppComponent,
+                        commit_detail_component_1.CommitDetailComponent,
+                        commit_component_1.CommitComponent,
+                        commit_search_component_1.CommitSearchComponent
                     ],
                     imports: [
                         platform_browser_1.BrowserModule,
-                        http_1.HttpModule,
-                        app_routes_1.routing
+                        http_1.HttpModule
                     ],
-                    providers: [],
-                    bootstrap: [app_components_1.AppComponent],
+                    providers: [commit_service_1.CommitService, commit_search_service_1.CommitSearchService],
+                    bootstrap: [app_component_1.AppComponent]
                 }), 
                 __metadata('design:paramtypes', [])
             ], AppModule);

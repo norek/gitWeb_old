@@ -9,6 +9,7 @@ var Builder = require('systemjs-builder');
 
 var scriptsPath = "Frontend/**/*.ts";
 var sassPath = "Frontend/**/*.scss";
+var cssPath = "Frontend/**/*.css";
 var imagesPath = "Frontend/**/*.{jpg,gif,png,svg}";
 var templatesPath = "Frontend/**/*.html";
 var destPath = "wwwroot/";
@@ -49,6 +50,11 @@ gulp.task("tslint", function () {
 gulp.task("sass", function () {
     gulp.src(sassPath)
       .pipe(sass().on("error", sass.logError))
+      .pipe(gulp.dest(destPath));
+});
+
+gulp.task("css", function () {
+    gulp.src(cssPath)
       .pipe(gulp.dest(destPath));
 });
 
@@ -94,6 +100,7 @@ gulp.task('bundle', function () {
 gulp.task("build", ['clean'], function () {
     gulp.start("static files");
     gulp.start("sass");
+    gulp.start("css");
     gulp.start("typescript");
     gulp.start("templates");
     gulp.start("images");
@@ -102,6 +109,7 @@ gulp.task("build", ['clean'], function () {
 
 gulp.task("watch", ['clean', 'build'], function () {
     gulp.watch(sassPath, ["sass"]);
+    gulp.watch(cssPath, ["css"]);
     gulp.watch(scriptsPath, ["typescript"]);
     gulp.watch(templatesPath, ["templates"]);
     gulp.watch(imagesPath, ["images"]);

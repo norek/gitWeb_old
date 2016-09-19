@@ -1,0 +1,10 @@
+<div id="search-component">
+    <h4>Commit Search</h4>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+    <div>
+        <div *ngFor="let commit of commits | async"
+             (click)="gotoDetail(commit)" class="search-result">
+            {{commit.name}}
+        </div>
+    </div>
+</div>

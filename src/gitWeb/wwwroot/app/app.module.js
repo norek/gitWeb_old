@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "./commit-detail.component", "./app.component", "./commit.component", "./commit.service"], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "./commit-detail.component", "./app.component", "./commit.component", "./commit.service", "./commit/commit-search.component", "./commit/commit-search.service", './rxjs-extensions'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, http_1, commit_detail_component_1, app_component_1, commit_component_1, commit_service_1;
+    var core_1, platform_browser_1, http_1, commit_detail_component_1, app_component_1, commit_component_1, commit_service_1, commit_search_component_1, commit_search_service_1;
     var AppModule;
     return {
         setters:[
@@ -34,7 +34,14 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
             },
             function (commit_service_1_1) {
                 commit_service_1 = commit_service_1_1;
-            }],
+            },
+            function (commit_search_component_1_1) {
+                commit_search_component_1 = commit_search_component_1_1;
+            },
+            function (commit_search_service_1_1) {
+                commit_search_service_1 = commit_search_service_1_1;
+            },
+            function (_1) {}],
         execute: function() {
             let AppModule = class AppModule {
             };
@@ -43,13 +50,14 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
                     declarations: [
                         app_component_1.AppComponent,
                         commit_detail_component_1.CommitDetailComponent,
-                        commit_component_1.CommitComponent
+                        commit_component_1.CommitComponent,
+                        commit_search_component_1.CommitSearchComponent
                     ],
                     imports: [
                         platform_browser_1.BrowserModule,
                         http_1.HttpModule
                     ],
-                    providers: [commit_service_1.CommitService],
+                    providers: [commit_service_1.CommitService, commit_search_service_1.CommitSearchService],
                     bootstrap: [app_component_1.AppComponent]
                 }), 
                 __metadata('design:paramtypes', [])
@@ -58,4 +66,4 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
         }
     }
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hcHAubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBcUJBO1lBQXlCLENBQUM7WUFiMUI7Z0JBQUMsZUFBUSxDQUFDO29CQUNOLFlBQVksRUFBRTt3QkFDViw0QkFBWTt3QkFDWiwrQ0FBcUI7d0JBQ3JCLGtDQUFlO3FCQUNsQjtvQkFDRCxPQUFPLEVBQUU7d0JBQ0wsZ0NBQWE7d0JBQ2IsaUJBQVU7cUJBQ2I7b0JBQ0QsU0FBUyxFQUFFLENBQUMsOEJBQWEsQ0FBQztvQkFDMUIsU0FBUyxFQUFFLENBQUMsNEJBQVksQ0FBQztpQkFDNUIsQ0FBQzs7eUJBQUE7WUFDRixpQ0FBMEIsQ0FBQSIsImZpbGUiOiJhcHAvYXBwLm1vZHVsZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7TmdNb2R1bGV9ICAgICAgIGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XHJcbmltcG9ydCB7QnJvd3Nlck1vZHVsZX0gZnJvbSBcIkBhbmd1bGFyL3BsYXRmb3JtLWJyb3dzZXJcIjtcclxuaW1wb3J0IHtIdHRwTW9kdWxlfSBmcm9tIFwiQGFuZ3VsYXIvaHR0cFwiO1xyXG5pbXBvcnQge0NvbW1pdERldGFpbENvbXBvbmVudH0gZnJvbSBcIi4vY29tbWl0LWRldGFpbC5jb21wb25lbnRcIjtcclxuaW1wb3J0IHtBcHBDb21wb25lbnR9IGZyb20gXCIuL2FwcC5jb21wb25lbnRcIjtcclxuaW1wb3J0IHtDb21taXRDb21wb25lbnR9IGZyb20gXCIuL2NvbW1pdC5jb21wb25lbnRcIjtcclxuaW1wb3J0IHtDb21taXRTZXJ2aWNlfSBmcm9tIFwiLi9jb21taXQuc2VydmljZVwiO1xyXG5cclxuQE5nTW9kdWxlKHtcclxuICAgIGRlY2xhcmF0aW9uczogW1xyXG4gICAgICAgIEFwcENvbXBvbmVudCxcclxuICAgICAgICBDb21taXREZXRhaWxDb21wb25lbnQsXHJcbiAgICAgICAgQ29tbWl0Q29tcG9uZW50XHJcbiAgICBdLFxyXG4gICAgaW1wb3J0czogW1xyXG4gICAgICAgIEJyb3dzZXJNb2R1bGUsXHJcbiAgICAgICAgSHR0cE1vZHVsZVxyXG4gICAgXSxcclxuICAgIHByb3ZpZGVyczogW0NvbW1pdFNlcnZpY2VdLFxyXG4gICAgYm9vdHN0cmFwOiBbQXBwQ29tcG9uZW50XVxyXG59KVxyXG5leHBvcnQgY2xhc3MgQXBwTW9kdWxlIHsgfSJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hcHAubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztZQTBCQTtZQUF5QixDQUFDO1lBZDFCO2dCQUFDLGVBQVEsQ0FBQztvQkFDTixZQUFZLEVBQUU7d0JBQ1YsNEJBQVk7d0JBQ1osK0NBQXFCO3dCQUNyQixrQ0FBZTt3QkFDZiwrQ0FBcUI7cUJBQ3hCO29CQUNELE9BQU8sRUFBRTt3QkFDTCxnQ0FBYTt3QkFDYixpQkFBVTtxQkFDYjtvQkFDRCxTQUFTLEVBQUUsQ0FBQyw4QkFBYSxFQUFFLDJDQUFtQixDQUFDO29CQUMvQyxTQUFTLEVBQUUsQ0FBQyw0QkFBWSxDQUFDO2lCQUM1QixDQUFDOzt5QkFBQTtZQUNGLGlDQUEwQixDQUFBIiwiZmlsZSI6ImFwcC9hcHAubW9kdWxlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtOZ01vZHVsZX0gICAgICAgZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcclxuaW1wb3J0IHtCcm93c2VyTW9kdWxlfSBmcm9tIFwiQGFuZ3VsYXIvcGxhdGZvcm0tYnJvd3NlclwiO1xyXG5pbXBvcnQge0h0dHBNb2R1bGV9IGZyb20gXCJAYW5ndWxhci9odHRwXCI7XHJcbmltcG9ydCB7Q29tbWl0RGV0YWlsQ29tcG9uZW50fSBmcm9tIFwiLi9jb21taXQtZGV0YWlsLmNvbXBvbmVudFwiO1xyXG5pbXBvcnQge0FwcENvbXBvbmVudH0gZnJvbSBcIi4vYXBwLmNvbXBvbmVudFwiO1xyXG5pbXBvcnQge0NvbW1pdENvbXBvbmVudH0gZnJvbSBcIi4vY29tbWl0LmNvbXBvbmVudFwiO1xyXG5pbXBvcnQge0NvbW1pdFNlcnZpY2V9IGZyb20gXCIuL2NvbW1pdC5zZXJ2aWNlXCI7XHJcbmltcG9ydCB7Q29tbWl0U2VhcmNoQ29tcG9uZW50fSBmcm9tIFwiLi9jb21taXQvY29tbWl0LXNlYXJjaC5jb21wb25lbnRcIjtcclxuaW1wb3J0IHtDb21taXRTZWFyY2hTZXJ2aWNlfSBmcm9tIFwiLi9jb21taXQvY29tbWl0LXNlYXJjaC5zZXJ2aWNlXCI7XHJcblxyXG5pbXBvcnQgJy4vcnhqcy1leHRlbnNpb25zJztcclxuXHJcbkBOZ01vZHVsZSh7XHJcbiAgICBkZWNsYXJhdGlvbnM6IFtcclxuICAgICAgICBBcHBDb21wb25lbnQsXHJcbiAgICAgICAgQ29tbWl0RGV0YWlsQ29tcG9uZW50LFxyXG4gICAgICAgIENvbW1pdENvbXBvbmVudCxcclxuICAgICAgICBDb21taXRTZWFyY2hDb21wb25lbnRcclxuICAgIF0sXHJcbiAgICBpbXBvcnRzOiBbXHJcbiAgICAgICAgQnJvd3Nlck1vZHVsZSxcclxuICAgICAgICBIdHRwTW9kdWxlXHJcbiAgICBdLFxyXG4gICAgcHJvdmlkZXJzOiBbQ29tbWl0U2VydmljZSwgQ29tbWl0U2VhcmNoU2VydmljZV0sXHJcbiAgICBib290c3RyYXA6IFtBcHBDb21wb25lbnRdXHJcbn0pXHJcbmV4cG9ydCBjbGFzcyBBcHBNb2R1bGUgeyB9Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
