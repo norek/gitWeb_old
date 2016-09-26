@@ -24,9 +24,7 @@ System.register(["@angular/core"], function(exports_1, context_1) {
                 core_1.Component({
                     selector: 'app',
                     styleUrls: ['app/Styles/app.component.css'],
-                    template: `
-                <h1> gitWeb </h1>
-                <commits></commits>`
+                    templateUrl: 'app/app.component.html'
                 }), 
                 __metadata('design:paramtypes', [])
             ], AppComponent);
@@ -34,4 +32,4 @@ System.register(["@angular/core"], function(exports_1, context_1) {
         }
     }
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hcHAuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBV0E7WUFDQSxDQUFDO1lBVEQ7Z0JBQUMsZ0JBQVMsQ0FBQztvQkFDUCxRQUFRLEVBQUUsS0FBSztvQkFDZixTQUFTLEVBQUMsQ0FBQyw4QkFBOEIsQ0FBQztvQkFDMUMsUUFBUSxFQUFFOztvQ0FFc0I7aUJBQ25DLENBQUM7OzRCQUFBO1lBRUYsdUNBQ0MsQ0FBQSIsImZpbGUiOiJhcHAvYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbXBvbmVudCB9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XHJcblxyXG5cclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvcjogJ2FwcCcsXHJcbiAgICBzdHlsZVVybHM6WydhcHAvU3R5bGVzL2FwcC5jb21wb25lbnQuY3NzJ10sXHJcbiAgICB0ZW1wbGF0ZTogYFxyXG4gICAgICAgICAgICAgICAgPGgxPiBnaXRXZWIgPC9oMT5cclxuICAgICAgICAgICAgICAgIDxjb21taXRzPjwvY29tbWl0cz5gXHJcbn0pXHJcblxyXG5leHBvcnQgY2xhc3MgQXBwQ29tcG9uZW50IHtcclxufSJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hcHAuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBU0E7WUFDQSxDQUFDO1lBUEQ7Z0JBQUMsZ0JBQVMsQ0FBQztvQkFDUCxRQUFRLEVBQUUsS0FBSztvQkFDZixTQUFTLEVBQUMsQ0FBQyw4QkFBOEIsQ0FBQztvQkFDMUMsV0FBVyxFQUFFLHdCQUF3QjtpQkFDeEMsQ0FBQzs7NEJBQUE7WUFFRix1Q0FDQyxDQUFBIiwiZmlsZSI6ImFwcC9hcHAuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ29tcG9uZW50IH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcclxuXHJcblxyXG5AQ29tcG9uZW50KHtcclxuICAgIHNlbGVjdG9yOiAnYXBwJyxcclxuICAgIHN0eWxlVXJsczpbJ2FwcC9TdHlsZXMvYXBwLmNvbXBvbmVudC5jc3MnXSxcclxuICAgIHRlbXBsYXRlVXJsOiAnYXBwL2FwcC5jb21wb25lbnQuaHRtbCdcclxufSlcclxuXHJcbmV4cG9ydCBjbGFzcyBBcHBDb21wb25lbnQge1xyXG59Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

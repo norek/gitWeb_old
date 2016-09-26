@@ -6,20 +6,10 @@ using System.Linq;
 
 namespace gitWeb.Backend
 {
-    public class GitApiController : Controller
+    public class BranchController : Controller
     {
         [HttpGet]
-        [Route("/api/git/log")]
-        public IActionResult GetRepoLog()
-        {
-            using (var repo = new Repository(Cl_RepositoryInfo.Path))
-            {
-                return Ok(repo.Commits.Select(d => new {d.Message, Id = d.Id.ToString()}).ToList());
-            }
-        }
-
-        [HttpGet]
-        [Route("/api/git/branch")]
+        [Route("/api/branch")]
         public IActionResult GetBranchList()
         {
             using (var repo = new Repository(Cl_RepositoryInfo.Path))

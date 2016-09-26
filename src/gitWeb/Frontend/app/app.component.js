@@ -24,9 +24,7 @@ System.register(["@angular/core"], function(exports_1, context_1) {
                 core_1.Component({
                     selector: 'app',
                     styleUrls: ['app/Styles/app.component.css'],
-                    template: `
-                <h1> gitWeb </h1>
-                <commits></commits>`
+                    templateUrl: 'app/app.component.html'
                 }), 
                 __metadata('design:paramtypes', [])
             ], AppComponent);

@@ -36,12 +36,6 @@ System.register(["@angular/http", "@angular/core", "rxjs/Rx", 'rxjs/add/operator
                         .map(b => b.json())
                         .catch((error) => Rx_1.Observable.throw(error.json().error || "Server error"));
                 }
-                getBranches() {
-                    return this.http
-                        .get("/api/git/branch")
-                        .map(b => b.json())
-                        .catch((error) => Rx_1.Observable.throw(error.json().error || "Server error"));
-                }
             };
             GitService = __decorate([
                 core_1.Injectable(), 

@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "./commit-detail.component", "./app.component", "./commit.component", "./commit.service", "./commit/commit-search.component", "./commit/commit-search.service", './rxjs-extensions'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "./commit-detail.component", "./app.component", "./commit.component", "./commit.service", "./commit/commit-search.component", "./commit/commit-search.service", "./branch/branch.service", "./branch/branch.component", './rxjs-extensions'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, http_1, commit_detail_component_1, app_component_1, commit_component_1, commit_service_1, commit_search_component_1, commit_search_service_1;
+    var core_1, platform_browser_1, http_1, commit_detail_component_1, app_component_1, commit_component_1, commit_service_1, commit_search_component_1, commit_search_service_1, branch_service_1, branch_component_1;
     var AppModule;
     return {
         setters:[
@@ -41,6 +41,12 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
             function (commit_search_service_1_1) {
                 commit_search_service_1 = commit_search_service_1_1;
             },
+            function (branch_service_1_1) {
+                branch_service_1 = branch_service_1_1;
+            },
+            function (branch_component_1_1) {
+                branch_component_1 = branch_component_1_1;
+            },
             function (_1) {}],
         execute: function() {
             let AppModule = class AppModule {
@@ -51,13 +57,14 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
                         app_component_1.AppComponent,
                         commit_detail_component_1.CommitDetailComponent,
                         commit_component_1.CommitComponent,
-                        commit_search_component_1.CommitSearchComponent
+                        commit_search_component_1.CommitSearchComponent,
+                        branch_component_1.BranchComponent
                     ],
                     imports: [
                         platform_browser_1.BrowserModule,
                         http_1.HttpModule
                     ],
-                    providers: [commit_service_1.CommitService, commit_search_service_1.CommitSearchService],
+                    providers: [commit_service_1.CommitService, commit_search_service_1.CommitSearchService, branch_service_1.BranchService],
                     bootstrap: [app_component_1.AppComponent]
                 }), 
                 __metadata('design:paramtypes', [])

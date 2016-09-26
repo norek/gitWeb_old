@@ -1,4 +1,4 @@
-System.register(["@angular/http", "@angular/core", "rxjs/Rx", 'rxjs/add/operator/map', 'rxjs/add/operator/catch'], function(exports_1, context_1) {
+System.register(["@angular/http", "@angular/core", "rxjs/RX", 'rxjs/add/operator/map', 'rxjs/add/operator/catch'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(["@angular/http", "@angular/core", "rxjs/Rx", 'rxjs/add/operator
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var http_1, core_1, Rx_1;
-    var CommitService;
+    var http_1, core_1, RX_1;
+    var BranchService;
     return {
         setters:[
             function (http_1_1) {
@@ -20,29 +20,28 @@ System.register(["@angular/http", "@angular/core", "rxjs/Rx", 'rxjs/add/operator
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (Rx_1_1) {
-                Rx_1 = Rx_1_1;
+            function (RX_1_1) {
+                RX_1 = RX_1_1;
             },
             function (_1) {},
             function (_2) {}],
         execute: function() {
-            let CommitService = class CommitService {
+            let BranchService = class BranchService {
                 constructor(http) {
                     this.http = http;
                 }
-                getLog() {
-                    return this.http
-                        .get("api/commit")
-                        .map(b => b.json())
-                        .catch((error) => Rx_1.Observable.throw(error.json().error || "Server error"));
+                getBranchList() {
+                    return this.http.get("/api/branch/")
+                        .map(s => s.json())
+                        .catch(err => RX_1.Observable.throw(err.json().error));
                 }
             };
-            CommitService = __decorate([
+            BranchService = __decorate([
                 core_1.Injectable(), 
                 __metadata('design:paramtypes', [http_1.Http])
-            ], CommitService);
-            exports_1("CommitService", CommitService);
+            ], BranchService);
+            exports_1("BranchService", BranchService);
         }
     }
 });
-//# sourceMappingURL=commit.service.js.map
+//# sourceMappingURL=branch.service.js.map

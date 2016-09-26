@@ -76,7 +76,7 @@ gulp.task("fonts", function () {
 gulp.task("static files", function () {
     gulp.src("Frontend/app/systemjs.config.js")
         .pipe(gulp.dest(destPath + "app/"));
-    gulp.src("Frontend/app/index.html")
+    gulp.src("Frontend/app/*.html")
         .pipe(gulp.dest(destPath + "app/"));
 });
 

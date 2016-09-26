@@ -31,7 +31,7 @@ System.register(['@angular/core', '@angular/http', "rxjs/Rx", 'rxjs/add/operator
                     this.http = http;
                 }
                 search(term) {
-                    return this.http.get('/api/commit/{term}')
+                    return this.http.get('/api/commit/' + term)
                         .map(d => d.json())
                         .catch((error) => Rx_1.Observable.throw(error.json().error || "Server error"));
                 }

@@ -14,7 +14,7 @@ export class CommitService {
 
     getLog(): Observable<Commit[]> {
         return this.http
-            .get("api/git/log")
+            .get("api/commit")
             .map(b => b.json())
             .catch((error: any) => Observable.throw(error.json().error || "Server error"));
     }

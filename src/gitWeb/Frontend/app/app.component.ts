@@ -4,9 +4,7 @@
 @Component({
     selector: 'app',
     styleUrls:['app/Styles/app.component.css'],
-    template: `
-                <h1> gitWeb </h1>
-                <commits></commits>`
+    templateUrl: 'app/app.component.html'
 })
 
 export class AppComponent {

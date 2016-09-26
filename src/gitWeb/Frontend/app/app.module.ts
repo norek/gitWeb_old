@@ -7,6 +7,8 @@ import {CommitComponent} from "./commit.component";
 import {CommitService} from "./commit.service";
 import {CommitSearchComponent} from "./commit/commit-search.component";
 import {CommitSearchService} from "./commit/commit-search.service";
+import {BranchService} from "./branch/branch.service";
+import {BranchComponent} from "./branch/branch.component";
 
 import './rxjs-extensions';
 
@@ -15,13 +17,14 @@ import './rxjs-extensions';
         AppComponent,
         CommitDetailComponent,
         CommitComponent,
-        CommitSearchComponent
+        CommitSearchComponent,
+        BranchComponent
     ],
     imports: [
         BrowserModule,
         HttpModule
     ],
-    providers: [CommitService, CommitSearchService],
+    providers: [CommitService, CommitSearchService,BranchService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
