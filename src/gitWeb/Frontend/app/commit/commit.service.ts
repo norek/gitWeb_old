@@ -4,7 +4,7 @@ import {Observable, } from "rxjs/Rx";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import {Commit} from "./Git/Model/Commit";
+import {Commit} from "../Git/Model/Commit";
 
 @Injectable()
 export class CommitService {

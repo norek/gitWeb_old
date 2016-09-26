@@ -28,5 +28,23 @@ namespace gitWeb.Backend
                 return Ok(vrlCommits);
             }
         }
+
+        [HttpGet]
+        [Route("/api/commit/{id}")]
+        public IActionResult GetCommitDetails(string id)
+        {
+            using (var repo = new Repository(Cl_RepositoryInfo.Path))
+            {
+                var vrlCommits = repo
+                                    .Commits
+                                    .Where(d => d.Id.ToString() == id)
+                                    .Select(d => new { d.Message, Id = d.Id.ToString(),d.Author,d.Committer,d.MessageShort,d.Notes})
+                                    .ToList();
+
+                return Ok(vrlCommits);
+            }
+        }
+
+
     }
 }

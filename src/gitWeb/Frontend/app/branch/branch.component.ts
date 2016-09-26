@@ -4,6 +4,7 @@ import {BranchService} from "./branch.service";
 
 @Component({
     selector: "branches",
+    styleUrls:["app/Styles/branch.component.css"],
     templateUrl: "branch.component.html"
 })
 

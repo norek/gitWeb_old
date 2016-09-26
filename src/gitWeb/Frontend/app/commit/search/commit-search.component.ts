@@ -1,6 +1,6 @@
 ﻿import {Component, OnInit } from '@angular/core';
 import {CommitSearchService} from "./commit-search.service";
-import {Commit} from "../Git/Model/Commit";
+import {Commit} from "../../Git/Model/Commit";
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 

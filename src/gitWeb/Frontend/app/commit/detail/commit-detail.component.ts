@@ -1,5 +1,5 @@
 ﻿import {Component, Input} from '@angular/core';
-import {Commit} from "./Git/Model/Commit";
+import {Commit} from "../../Git/Model/Commit";
 
 @Component({
     selector: 'commit-detail',
