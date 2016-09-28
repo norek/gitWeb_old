@@ -9,6 +9,7 @@ import {CommitSearchComponent} from "./commit/search/commit-search.component";
 import {CommitSearchService} from "./commit/search/commit-search.service";
 import {BranchService} from "./branch/branch.service";
 import {BranchComponent} from "./branch/branch.component";
+import {TagComponent} from "./tag/tag.component";
 
 import './rxjs-extensions';
 
@@ -18,7 +19,8 @@ import './rxjs-extensions';
         CommitDetailComponent,
         CommitComponent,
         CommitSearchComponent,
-        BranchComponent
+        BranchComponent,
+        TagComponent
     ],
     imports: [
         BrowserModule,

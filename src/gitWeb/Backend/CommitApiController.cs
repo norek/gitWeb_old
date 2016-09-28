@@ -37,25 +37,20 @@ namespace gitWeb.Backend
         {
             using (var repo = new Repository(Cl_RepositoryInfo.Path))
             {
-                var commit = repo.Commits.Single(d => d.Sha == id);
+                Commit commit = repo.Commits.Single(d => d.Sha == id);
 
-                Console.WriteLine("{0} : {1}", commit.Committer.When.ToLocalTime(), commit.MessageShort);
-
-                var parent = commit.Parents.LastOrDefault();
+                Commit parent = commit.Parents.LastOrDefault();
 
                 if (parent != null)
                 {
-                    IEnumerable<TreeEntryChanges> treeEntryChangeses = repo.Diff.Compare<TreeChanges>(parent.Tree, commit.Tree);
+                    var treeEntryChangeses = repo.Diff
+                        .Compare<TreeChanges>(parent.Tree, commit.Tree)
+                        .Select(d => new {Status = d.Status.ToString(), d.Path}).ToList();
 
-                    foreach (TreeEntryChanges change in treeEntryChangeses)
-                    {
-                        Console.WriteLine("\t{0} :\t{1}", change.Status, change.OldPath);
-                    }
-
-                    return Ok(treeEntryChangeses.Select(d => new {Status = d.Status.ToString(), d.Path}).ToList());
+                    return Ok(treeEntryChangeses);
                 }
 
-                return Ok(Enumerable.Empty<TreeEntryChanges>());
+                return NotFound(id);
             }
         }
     }

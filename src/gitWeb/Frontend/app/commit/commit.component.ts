@@ -1,5 +1,5 @@
 ﻿import {Component} from "@angular/core";
-import {Commit} from "../Git/Model/Commit";
+import {Commit } from "../Git/Model/Commit";
 import {CommitService} from "./commit.service";
 import {Branch} from "../branch/Branch";
 
