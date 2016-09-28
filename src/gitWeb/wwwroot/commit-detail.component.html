@@ -1,5 +1,15 @@
-<div *ngIf="commit">
+<div class="detailComponnet" *ngIf="commit">
     <h2>Details</h2>
-    <div><label>id: </label>{{commit.id}}</div>
-    <div><label>message: </label>{{commit.message}}</div>
+    <div><label>Id: </label> {{commit.id}}</div>
+    <div><label>Short: </label> {{commit.shortMessage}}</div>
+    <div><label>Message: </label> {{commit.message}}</div>
+    <div><label>Date: </label> {{commit.author.date}}</div>
+    <div><label>Author: </label> {{commit.author.name}}</div>
+    <div><label>Email: </label> {{commit.author.email}}</div>
+</div>
+
+<div *ngIf="changes">
+    <li *ngFor="let change of changes">
+        <span class="badge">{{change.status}}</span> {{change.path}}
+    </li>
 </div>

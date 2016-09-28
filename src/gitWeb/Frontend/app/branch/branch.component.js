@@ -38,6 +38,7 @@ System.register(["@angular/core", "./branch.service"], function(exports_1, conte
             BranchComponent = __decorate([
                 core_1.Component({
                     selector: "branches",
+                    styleUrls: ["app/Styles/branch.component.css"],
                     templateUrl: "branch.component.html"
                 }), 
                 __metadata('design:paramtypes', [branch_service_1.BranchService])

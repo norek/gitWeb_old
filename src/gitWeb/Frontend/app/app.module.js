@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "./commit-detail.component", "./app.component", "./commit.component", "./commit.service", "./commit/commit-search.component", "./commit/commit-search.service", "./branch/branch.service", "./branch/branch.component", './rxjs-extensions'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "./commit/detail/commit-detail.component", "./app.component", "./commit/commit.component", "./commit/commit.service", "./commit/search/commit-search.component", "./commit/search/commit-search.service", "./branch/branch.service", "./branch/branch.component", './rxjs-extensions'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

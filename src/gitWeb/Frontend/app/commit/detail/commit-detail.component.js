@@ -1,4 +1,4 @@
-System.register(['@angular/core', "./Git/Model/Commit"], function(exports_1, context_1) {
+System.register(['@angular/core', "../../Git/Model/Commit", "../changes/commit-changes.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', "./Git/Model/Commit"], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Commit_1;
+    var core_1, Commit_1, commit_changes_service_1;
     var CommitDetailComponent;
     return {
         setters:[
@@ -19,9 +19,25 @@ System.register(['@angular/core', "./Git/Model/Commit"], function(exports_1, con
             },
             function (Commit_1_1) {
                 Commit_1 = Commit_1_1;
+            },
+            function (commit_changes_service_1_1) {
+                commit_changes_service_1 = commit_changes_service_1_1;
             }],
         execute: function() {
             let CommitDetailComponent = class CommitDetailComponent {
+                constructor(commitChangeService) {
+                    this.commitChangeService = commitChangeService;
+                }
+                ngOnChanges(changes) {
+                    console.log('ngOnChanges: ' + JSON.stringify(changes['commit'].currentValue));
+                    let change = changes['commit'];
+                    if (change.currentValue !== undefined) {
+                        console.log("Call for details: " + change.currentValue.id);
+                        this.commitChangeService
+                            .getCommitChanges(change.currentValue.id)
+                            .subscribe(d => this.changes = d);
+                    }
+                }
             };
             __decorate([
                 core_1.Input(), 
@@ -31,9 +47,10 @@ System.register(['@angular/core', "./Git/Model/Commit"], function(exports_1, con
                 core_1.Component({
                     selector: 'commit-detail',
                     styleUrls: ['app/Styles/commit-detail.component.css'],
-                    templateUrl: 'commit-detail.component.html'
+                    templateUrl: 'commit-detail.component.html',
+                    providers: [commit_changes_service_1.CommitChangesService]
                 }), 
-                __metadata('design:paramtypes', [])
+                __metadata('design:paramtypes', [commit_changes_service_1.CommitChangesService])
             ], CommitDetailComponent);
             exports_1("CommitDetailComponent", CommitDetailComponent);
         }
