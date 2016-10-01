@@ -1,7 +1,8 @@
-<h1>  Branches <span class="caret"></span></h1>
-<ul class="branchList">
-    <li *ngFor="let branch of branchList" (click)="onSelect(branch)"
-        [class.selected]="branch === selectedBranch">
-        <span class="badge">{{branch.isRemote}}</span> {{branch.name}}
-    </li>
-</ul>
+<details>
+    <summary class="header"> Branches </summary>
+    <ul class="branchList">
+        <li *ngFor="let branch of branchList" (click)="onSelect(branch)" [class.selected]="branch === selectedBranch">
+            <span class="badge">{{branch.isRemote}}</span> {{branch.name}}
+        </li>
+    </ul>
+</details>

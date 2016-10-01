@@ -1,14 +1,10 @@
-<h1>  GIT LOG </h1>
-<div class="col-md-9">
-    <ul class="commitList">
-        <li *ngFor="let commit of commits" (click)="onSelect(commit)"
-            [class.selected]="commit === selectedCommit">
-            <span class="badge">{{commit.id}}</span> {{commit.message}}
-        </li>
-    </ul>
+<ul class="commitList">
+    <li *ngFor="let commit of commits" (click)="onSelect(commit)" [class.selected]="commit === selectedCommit">
+        <span class="badge">{{commit.id}}</span> {{commit.message}}
+    </li>
+</ul>
 
-    <commit-search></commit-search>
-</div>
-<div class="col-md-3">
-    <commit-detail [commit]="selectedCommit"></commit-detail>
-</div>
+<!--<commit-search></commit-search>-->
+
+
+<commit-detail [commit]="selectedCommit"></commit-detail>

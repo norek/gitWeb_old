@@ -29,7 +29,7 @@ export class BranchComponent {
 
     onSelect(branch:Branch):void{
         this.selectedBranch = branch;
-        this.onBranchSelected.emit(this.selectedBranch);
+        this.branchService.setCurrentBranch(branch);
     }
 
 }

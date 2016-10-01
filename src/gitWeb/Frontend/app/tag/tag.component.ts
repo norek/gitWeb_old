@@ -4,12 +4,14 @@ import {GitTag} from "./gittag";
 
 @Component({
     selector: 'tag',
-    template: `<h1> TAGS </h1>
+    template: `<details>
+                    <summary class="header"> Tags </summary>
                 <ul>
                     <li *ngFor="let tag of tagList" (click)="onSelect(tag)">
                         <span class="badge">{{tag.name}}</span>
                     </li>
-                </ul>`,
+                </ul>
+                </details>`,
     providers: [TagService]
 
 })
