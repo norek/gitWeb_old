@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component,EventEmitter,Output} from "@angular/core";
 import {Branch} from "./branch";
 import {BranchService} from "./branch.service";
 
@@ -17,6 +17,8 @@ export class BranchComponent {
     branchList:Branch[];
     selectedBranch:Branch;
 
+    @Output() onBranchSelected = new EventEmitter<Branch>();
+
     ngOnInit() {
         this.getBranchList();
     }
@@ -27,6 +29,7 @@ export class BranchComponent {
 
     onSelect(branch:Branch):void{
         this.selectedBranch = branch;
+        this.onBranchSelected.emit(this.selectedBranch);
     }
 
 }
