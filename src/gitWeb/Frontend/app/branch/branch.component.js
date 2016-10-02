@@ -24,7 +24,6 @@ System.register(["@angular/core", "./branch.service"], function(exports_1, conte
             let BranchComponent = class BranchComponent {
                 constructor(branchService) {
                     this.branchService = branchService;
-                    this.onBranchSelected = new core_1.EventEmitter();
                 }
                 ngOnInit() {
                     this.getBranchList();
@@ -34,13 +33,9 @@ System.register(["@angular/core", "./branch.service"], function(exports_1, conte
                 }
                 onSelect(branch) {
                     this.selectedBranch = branch;
-                    this.onBranchSelected.emit(this.selectedBranch);
+                    this.branchService.setCurrentBranch(branch);
                 }
             };
-            __decorate([
-                core_1.Output(), 
-                __metadata('design:type', Object)
-            ], BranchComponent.prototype, "onBranchSelected", void 0);
             BranchComponent = __decorate([
                 core_1.Component({
                     selector: "branches",

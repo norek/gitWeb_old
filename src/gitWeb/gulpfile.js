@@ -12,7 +12,9 @@ var sassPath = "Frontend/**/*.scss";
 var cssPath = "Frontend/**/*.css";
 var imagesPath = "Frontend/**/*.{jpg,gif,png,svg}";
 var templatesPath = "Frontend/**/*.html";
+var jsPath = "Frontend/app/graph/gitgraph.js";
 var destPath = "wwwroot/";
+
 
 gulp.task('clean', function () {
     return del([
@@ -63,6 +65,12 @@ gulp.task("images", function () {
         .pipe(gulp.dest(destPath));
 });
 
+gulp.task("js", function () {
+    gulp.src(jsPath)
+        .pipe(gulp.dest(destPath + '/app/'));
+});
+
+
 gulp.task("templates", function () {
     gulp.src(templatesPath)
         .pipe(gulp.dest(destPath));
@@ -101,6 +109,7 @@ gulp.task("build", ['clean'], function () {
     gulp.start("static files");
     gulp.start("sass");
     gulp.start("css");
+    gulp.start("js");
     gulp.start("typescript");
     gulp.start("templates");
     gulp.start("images");
@@ -110,6 +119,7 @@ gulp.task("build", ['clean'], function () {
 gulp.task("watch", ['clean', 'build'], function () {
     gulp.watch(sassPath, ["sass"]);
     gulp.watch(cssPath, ["css"]);
+    gulp.watch(jsPath, ["js"]);
     gulp.watch(scriptsPath, ["typescript"]);
     gulp.watch(templatesPath, ["templates"]);
     gulp.watch(imagesPath, ["images"]);
