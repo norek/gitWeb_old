@@ -1,4 +1,4 @@
-System.register(["@angular/core", "./commit.service", "../branch/Branch.Service"], function(exports_1, context_1) {
+System.register(["@angular/core", "./commit.service", "../branch/branch.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["@angular/core", "./commit.service", "../branch/Branch.Service"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, commit_service_1, Branch_Service_1;
+    var core_1, commit_service_1, branch_service_1;
     var CommitComponent;
     return {
         setters:[
@@ -20,28 +20,50 @@ System.register(["@angular/core", "./commit.service", "../branch/Branch.Service"
             function (commit_service_1_1) {
                 commit_service_1 = commit_service_1_1;
             },
-            function (Branch_Service_1_1) {
-                Branch_Service_1 = Branch_Service_1_1;
+            function (branch_service_1_1) {
+                branch_service_1 = branch_service_1_1;
             }],
         execute: function() {
             let CommitComponent = class CommitComponent {
                 constructor(gitService, branchService) {
                     this.gitService = gitService;
                     this.branchService = branchService;
-                    this.gitgraph = new GitGraph();
+                    this.loggedIn = false;
                 }
                 ngOnInit() {
+                    this.subscription = this.branchService.currentBranch.subscribe(b => {
+                        this.currentBranch = b;
+                        if (b !== undefined) {
+                            let currentBranchCommitIndex = this.commits.map(s => s.id).indexOf(b.tipSha);
+                            if (currentBranchCommitIndex > 0) {
+                                this.selectedCommit = this.commits[currentBranchCommitIndex];
+                            }
+                        }
+                    });
+                }
+                ngAfterViewInit() {
+                    //     this.gitgraph = new GitGraph();
+                    //     var master = this.gitgraph.branch("master");
                     this.getGitLog();
-                    this.subscription = this.branchService.currentBranch.subscribe(b => { this.currentBranch = b; });
-                    this.gitgraph.commit().commit().commit();
                 }
                 onSelect(commit) {
                     this.selectedCommit = commit;
                 }
                 getGitLog() {
                     this.gitService.getLog()
-                        .subscribe(s => this.commits = s);
+                        .subscribe(s => {
+                        this.commits = s;
+                        // this.drawGraph();
+                    });
                 }
+                // drawGraph(): void {
+                //     for (let commit of this.commits) {
+                //         this.gitgraph.commit({
+                //             message: commit.message,
+                //             author: commit.author.name + " " + commit.author.email
+                //         });
+                //     }
+                // }
                 ngOnDestroy() {
                     this.subscription.unsubscribe();
                 }
@@ -50,13 +72,14 @@ System.register(["@angular/core", "./commit.service", "../branch/Branch.Service"
                 core_1.Component({
                     selector: "commits",
                     templateUrl: 'commit.component.html',
-                    styleUrls: ['app/Styles/commit.component.css'],
-                    providers: [Branch_Service_1.BranchService]
+                    // template: `<canvas id="gitGraph"></canvas>`,
+                    styleUrls: ['app/Styles/commit.component.css']
                 }), 
-                __metadata('design:paramtypes', [commit_service_1.CommitService, Branch_Service_1.BranchService])
+                __metadata('design:paramtypes', [commit_service_1.CommitService, branch_service_1.BranchService])
             ], CommitComponent);
             exports_1("CommitComponent", CommitComponent);
         }
     }
 });
+// declare var GitGraph: any; 
 //# sourceMappingURL=commit.component.js.map

@@ -14,10 +14,29 @@ namespace gitWeb.Backend
         {
             using (var repo = new Repository(Cl_RepositoryInfo.Path))
             {
-                
-                
-                return Ok(repo.Branches.Select(d => new {Name = d.FriendlyName, IsRemote = d.IsRemote,d.IsCurrentRepositoryHead,d.Commits.First().Sha}).ToList());
+                return
+                    Ok(repo.Branches.Select(d =>
+                                new
+                                {
+                                    Name = d.FriendlyName,
+                                    IsRemote = d.IsRemote,
+                                    d.IsCurrentRepositoryHead,
+                                    tipSha = d.Tip.Sha
+                                }).ToList());
             }
         }
+
+        //[HttpGet]
+        //[Route("/api/branch/{id}/commit")]
+        //public IActionResult GetCommits()
+        //{
+        //    using (var repo = new Repository(Cl_RepositoryInfo.Path))
+        //    {
+        //        var filter = new CommitFilter { SortBy = CommitSortStrategies.Topological };
+
+        //        return Ok(repo.Commits.QueryBy(filter)
+        //        .Select(d => new { d.Message, Id = d.Id.ToString(), Author = new { d.Author.Name, d.Author.When, d.Author.Email }, d.MessageShort }).ToList());
+        //    }
+        //}
     }
 }

@@ -26,7 +26,7 @@ import './rxjs-extensions';
         BrowserModule,
         HttpModule
     ],
-    providers: [CommitService, CommitSearchService,BranchService],
+    providers: [CommitService, CommitSearchService, BranchService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

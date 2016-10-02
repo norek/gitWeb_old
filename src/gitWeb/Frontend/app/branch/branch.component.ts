@@ -17,8 +17,6 @@ export class BranchComponent {
     branchList:Branch[];
     selectedBranch:Branch;
 
-    @Output() onBranchSelected = new EventEmitter<Branch>();
-
     ngOnInit() {
         this.getBranchList();
     }

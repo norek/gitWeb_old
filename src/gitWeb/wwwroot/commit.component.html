@@ -1,3 +1,5 @@
+<p>{{currentBranch?.tipSha}}</p>
+
 <ul class="commitList">
     <li *ngFor="let commit of commits" (click)="onSelect(commit)" [class.selected]="commit === selectedCommit">
         <span class="badge">{{commit.id}}</span> {{commit.message}}
@@ -7,6 +9,6 @@
 <!--<commit-search></commit-search>-->
 
 
-<!--<commit-detail [commit]="selectedCommit"></commit-detail>-->
+<!--<commit-detail [commit]="selectedCommit"></commit-detail>
 
-<canvas id="gitGraph"></canvas>
+<!--<canvas id="gitGraph"></canvas>-->

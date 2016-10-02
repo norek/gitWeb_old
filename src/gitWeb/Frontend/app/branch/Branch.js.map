@@ -1,1 +1,1 @@
-{"version":3,"file":"Branch.js","sourceRoot":"","sources":["Branch.ts"],"names":[],"mappings":";;;;;;;YAAA;gBACI,YAAmB,IAAY,EAAS,QAAgB;oBAArC,SAAI,GAAJ,IAAI,CAAQ;oBAAS,aAAQ,GAAR,QAAQ,CAAQ;gBAExD,CAAC;YACL,CAAC;YAJD,2BAIC,CAAA"}
+{"version":3,"file":"Branch.js","sourceRoot":"","sources":["Branch.ts"],"names":[],"mappings":";;;;;;;YACuC;gBACnC,YAAmB,IAAY,EAAS,QAAiB,EAAS,MAAc;oBAA7D,SAAI,GAAJ,IAAI,CAAQ;oBAAS,aAAQ,GAAR,QAAQ,CAAS;oBAAS,WAAM,GAAN,MAAM,CAAQ;gBAEhF,CAAC;YACL,CAAC;YAJsC,2BAItC,CAAA"}
