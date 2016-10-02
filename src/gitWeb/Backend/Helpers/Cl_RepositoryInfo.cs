@@ -5,8 +5,7 @@
     /// </summary>
     public static class Cl_RepositoryInfo
     {
-        public static string Path {
-            get { return @"C:\Projects\Own\gitWeb"; }
-        }
+        public static string Path => System.IO.Path.GetDirectoryName(
+            System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
     }
 }
