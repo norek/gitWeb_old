@@ -19,8 +19,8 @@ namespace gitWeb.Backend
                                 new
                                 {
                                     Name = d.FriendlyName,
-                                    IsRemote = d.IsRemote,
-                                    d.IsCurrentRepositoryHead,
+                                    isRemote = d.IsRemote,
+                                    isCurrentRepositoryHead = d.IsCurrentRepositoryHead,
                                     tipSha = d.Tip.Sha
                                 }).ToList());
             }
