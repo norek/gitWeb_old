@@ -16,7 +16,7 @@ namespace gitWeb.Backend
         {
             using (var repo = new Repository(Cl_RepositoryInfo.Path))
             {
-                return Ok(repo.Tags.Select(d => new { Name = d.FriendlyName }).ToList());
+                return Ok(repo.Tags.Select(d => new { Name = d.FriendlyName ,}).ToList());
             }
         }
     }

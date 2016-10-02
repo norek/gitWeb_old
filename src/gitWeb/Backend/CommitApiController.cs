@@ -17,13 +17,49 @@ namespace gitWeb.Backend
         {
             using (var repo = new Repository(Cl_RepositoryInfo.Path))
             {
-                var filter = new CommitFilter { SortBy = CommitSortStrategies.Topological };
+                var commitIdToTagLookup = CreateCommitIdToTagLookup(repo);
 
-                return Ok(repo.Commits.QueryBy(filter)
-                .Select(d => new { d.Message, Id = d.Id.ToString(), Author = new { d.Author.Name, d.Author.When, d.Author.Email }, d.MessageShort }).ToList());
+                var filter = new CommitFilter
+                {
+                    SortBy = CommitSortStrategies.Topological,
+                    IncludeReachableFrom = repo.Refs
+                };
+
+                var commitList = repo.Commits.QueryBy(filter).Select(w => new
+                {
+                    w.Message,
+                    Id = w.Id.ToString(),
+                    Author = new { w.Author.Name, w.Author.When, w.Author.Email },
+                    w.MessageShort
+                }).ToList();
+
+                var fullCommitList = (from commit in commitList
+                                       join tag in commitIdToTagLookup on commit.Id equals tag.Key into gj
+                                       from subTag in gj.DefaultIfEmpty()
+                                       select new
+                                       {
+                                           commit.Message,
+                                           Id = commit.Id.ToString(),
+                                           Author = new { commit.Author.Name, commit.Author.When, commit.Author.Email },
+                                           commit.MessageShort,
+                                           tags = subTag?.FirstOrDefault()
+                                       }).ToList();
+
+                return Ok(fullCommitList);
             }
+
         }
 
+        private static ILookup<string, string> CreateCommitIdToTagLookup(Repository repo)
+        {
+            var commitIdToTagLookup =
+                repo.Tags
+                    .Select(tag => new { Commit = tag.PeeledTarget as Commit, Tag = tag })
+                    .Where(x => x.Commit != null)
+                    .ToLookup(x => x.Commit.Sha, x => x.Tag.FriendlyName);
+
+            return commitIdToTagLookup;
+        }
 
 
 
@@ -53,7 +89,7 @@ namespace gitWeb.Backend
                 {
                     var treeEntryChangeses = repo.Diff
                         .Compare<TreeChanges>(parent.Tree, commit.Tree)
-                        .Select(d => new {Status = d.Status.ToString(), d.Path}).ToList();
+                        .Select(d => new { Status = d.Status.ToString(), d.Path }).ToList();
 
                     return Ok(treeEntryChangeses);
                 }

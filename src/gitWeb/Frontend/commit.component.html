@@ -2,7 +2,7 @@
 
 <ul class="commitList">
     <li *ngFor="let commit of commits" (click)="onSelect(commit)" [class.selected]="commit === selectedCommit">
-        <span class="badge">{{commit.id}}</span> {{commit.message}}
+        <span class="badge">{{commit.id}}</span>{{commit.tags}} {{commit.message}}
     </li>
 </ul>
 

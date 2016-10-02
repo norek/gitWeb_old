@@ -6,7 +6,7 @@
 
 export class Author {
 
-    constructor(public name: string, public date: Date, public email: string) {
+    constructor(public name: string, public date: Date, public email: string,public tags :string[]) {
 
     }
 
