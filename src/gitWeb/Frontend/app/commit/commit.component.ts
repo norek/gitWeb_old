@@ -43,6 +43,8 @@ export class CommitComponent {
     //     this.gitgraph = new GitGraph();
     //     var master = this.gitgraph.branch("master");
         this.getGitLog();
+
+        //changes changes changes
     }
 
     onSelect(commit: Commit): void {
