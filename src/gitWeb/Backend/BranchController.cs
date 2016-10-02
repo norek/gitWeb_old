@@ -14,8 +14,6 @@ namespace gitWeb.Backend
         {
             using (var repo = new Repository(Cl_RepositoryInfo.Path))
             {
-                
-                
                 return Ok(repo.Branches.Select(d => new {Name = d.FriendlyName, IsRemote = d.IsRemote,d.IsCurrentRepositoryHead,d.Commits.First().Sha}).ToList());
             }
         }
