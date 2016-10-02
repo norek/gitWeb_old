@@ -1,0 +1,17 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:2714/",
+             "runtimeArgs": [
+                "--new-window", //Open in new window
+                "--remote-debugging-port=9222" 
+            ],
+            "webRoot": "${workspaceRoot}/app/Frontend",
+            "sourceMaps": true
+        }
+    ]
+}
