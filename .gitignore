@@ -243,3 +243,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+src/gitWeb/wwwroot/
+*.js
+*.map.js
