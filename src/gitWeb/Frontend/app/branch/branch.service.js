@@ -29,6 +29,11 @@ System.register(["@angular/http", "@angular/core", "rxjs/RX", 'rxjs/add/operator
             let BranchService = class BranchService {
                 constructor(http) {
                     this.http = http;
+                    this.currentBranch = new RX_1.Observable(obs => this.observer = obs).share();
+                }
+                setCurrentBranch(branch) {
+                    if (this.observer !== undefined)
+                        this.observer.next(branch);
                 }
                 getBranchList() {
                     return this.http.get("/api/branch/")
@@ -44,4 +49,4 @@ System.register(["@angular/http", "@angular/core", "rxjs/RX", 'rxjs/add/operator
         }
     }
 });
-//# sourceMappingURL=branch.service.js.map
+//# sourceMappingURL=Branch.Service.js.map

@@ -34,7 +34,7 @@ System.register(["@angular/core", "./branch.service"], function(exports_1, conte
                 }
                 onSelect(branch) {
                     this.selectedBranch = branch;
-                    this.onBranchSelected.emit(this.selectedBranch);
+                    this.branchService.setCurrentBranch(branch);
                 }
             };
             __decorate([

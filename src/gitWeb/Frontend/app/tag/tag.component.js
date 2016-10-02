@@ -35,12 +35,14 @@ System.register(["@angular/core", "./tag.service"], function(exports_1, context_
             TagComponent = __decorate([
                 core_1.Component({
                     selector: 'tag',
-                    template: `<h1> TAGS </h1>
+                    template: `<details>
+                    <summary class="header"> Tags </summary>
                 <ul>
                     <li *ngFor="let tag of tagList" (click)="onSelect(tag)">
                         <span class="badge">{{tag.name}}</span>
                     </li>
-                </ul>`,
+                </ul>
+                </details>`,
                     providers: [tag_service_1.TagService]
                 }), 
                 __metadata('design:paramtypes', [tag_service_1.TagService])

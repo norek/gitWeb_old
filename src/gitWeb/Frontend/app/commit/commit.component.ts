@@ -1,4 +1,4 @@
-﻿import {Component} from "@angular/core";
+﻿import {Component,ViewChild} from "@angular/core";
 import {Commit } from "../Git/Model/Commit";
 import {CommitService} from "./commit.service";
 import {Branch} from "../branch/Branch";
@@ -6,7 +6,8 @@ import {BranchService} from "../branch/Branch.Service";
 
 @Component({
     selector: "commits",
-    templateUrl: 'commit.component.html',
+    // templateUrl: 'commit.component.html',
+    template: `<canvas id="gitGraph"></canvas>`,
     styleUrls: ['app/Styles/commit.component.css'],
     providers: [BranchService]
 })
@@ -21,10 +22,19 @@ export class CommitComponent {
     currentBranch: Branch;
     commits: Commit[];
     selectedCommit: Commit;
+    gitgraph:any;
 
     ngOnInit() {
         this.getGitLog();
         this.subscription = this.branchService.currentBranch.subscribe(b => { this.currentBranch = b });
+
+    }
+
+    ngAfterViewInit() { // wait for the view to init before using the element
+        this.gitgraph = new GitGraph();
+        var master = this.gitgraph.branch("master");
+        this.gitgraph.commit('s');  
+
     }
 
     onSelect(commit: Commit): void {
@@ -39,4 +49,8 @@ export class CommitComponent {
     ngOnDestroy(){
         this.subscription.unsubscribe();
     }
+
+
 }
+
+declare var GitGraph:any;

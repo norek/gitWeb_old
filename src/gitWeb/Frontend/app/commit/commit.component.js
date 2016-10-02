@@ -1,4 +1,4 @@
-System.register(["@angular/core", "./commit.service"], function(exports_1, context_1) {
+System.register(["@angular/core", "./commit.service", "../branch/Branch.Service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["@angular/core", "./commit.service"], function(exports_1, conte
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, commit_service_1;
+    var core_1, commit_service_1, Branch_Service_1;
     var CommitComponent;
     return {
         setters:[
@@ -19,14 +19,21 @@ System.register(["@angular/core", "./commit.service"], function(exports_1, conte
             },
             function (commit_service_1_1) {
                 commit_service_1 = commit_service_1_1;
+            },
+            function (Branch_Service_1_1) {
+                Branch_Service_1 = Branch_Service_1_1;
             }],
         execute: function() {
             let CommitComponent = class CommitComponent {
-                constructor(gitService) {
+                constructor(gitService, branchService) {
                     this.gitService = gitService;
+                    this.branchService = branchService;
+                    this.gitgraph = new GitGraph();
                 }
                 ngOnInit() {
                     this.getGitLog();
+                    this.subscription = this.branchService.currentBranch.subscribe(b => { this.currentBranch = b; });
+                    this.gitgraph.commit().commit().commit();
                 }
                 onSelect(commit) {
                     this.selectedCommit = commit;
@@ -35,14 +42,18 @@ System.register(["@angular/core", "./commit.service"], function(exports_1, conte
                     this.gitService.getLog()
                         .subscribe(s => this.commits = s);
                 }
+                ngOnDestroy() {
+                    this.subscription.unsubscribe();
+                }
             };
             CommitComponent = __decorate([
                 core_1.Component({
                     selector: "commits",
                     templateUrl: 'commit.component.html',
-                    styleUrls: ['app/Styles/commit.component.css']
+                    styleUrls: ['app/Styles/commit.component.css'],
+                    providers: [Branch_Service_1.BranchService]
                 }), 
-                __metadata('design:paramtypes', [commit_service_1.CommitService])
+                __metadata('design:paramtypes', [commit_service_1.CommitService, Branch_Service_1.BranchService])
             ], CommitComponent);
             exports_1("CommitComponent", CommitComponent);
         }
