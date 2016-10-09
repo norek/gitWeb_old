@@ -18,21 +18,31 @@ namespace gitWeb.Backend
             using (var repo = new Repository(Cl_RepositoryInfo.Path))
             {
                 FetchOptions options = new FetchOptions();
-                
+
                 foreach (var remoteRepo in repo.Network.Remotes)
                 {
-                    Commands.Fetch(repo,remoteRepo.Name,new List<string>(), options,null);
+                    Commands.Fetch(repo, remoteRepo.Name, new List<string>(), options, null);
                 }
             }
 
-            return Ok();
+            return Ok(true);
         }
 
         [HttpPost]
         [Route("api/repository/pull")]
         public IActionResult Pull()
         {
-            return Ok();
+            using (var repo = new Repository(Cl_RepositoryInfo.Path))
+            {
+                LibGit2Sharp.PullOptions options = new PullOptions();
+                options.FetchOptions = new FetchOptions();
+                options.MergeOptions = new MergeOptions();
+
+                MergeResult result = Commands.Pull(repo,
+                    new Signature("Norbert Rozmus", "norekzal@gmail.com", new DateTimeOffset(DateTime.Now)), options);
+
+                return Ok(new { sha = result.Commit?.Sha, status = result.Status });
+            }
         }
     }
 }

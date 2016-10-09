@@ -6,7 +6,9 @@
         "Microsoft.Extensions.Logging.Console": "1.0.0",
         "Microsoft.AspNetCore.Mvc": "1.0.0",
         "Microsoft.AspNetCore.StaticFiles": "1.0.0",
-        "LibGit2Sharp": "0.23.0-pre20160803182831"
+        "LibGit2Sharp": "0.23.0-pre20160803182831",
+        "Swashbuckle.SwaggerGen": "6.0.0-beta901",
+        "Swashbuckle.SwaggerUi": "6.0.0-beta901"
     },
 
   "tools": {
@@ -29,7 +31,8 @@
     ]
   },
 
-  "scripts": {
-    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
-  }
+    "scripts": {
+        "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+    },
+    "userSecretsId": "aspnet-gitWeb-20161009091852"
 }
