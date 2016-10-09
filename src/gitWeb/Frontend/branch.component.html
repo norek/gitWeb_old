@@ -5,7 +5,7 @@
             (click)="onSelect(branch)" [class.selected]="branch === selectedBranch">
              <span class="mdl-list__item-primary-content">
                 <i *ngIf="isCurrentRepositoryHead(branch)" class="material-icons mdl-list__item-icon">label</i>
-                {{branch.name}}
+                {{branch.name}} committest
              </span>
         </li>
     </ul>
