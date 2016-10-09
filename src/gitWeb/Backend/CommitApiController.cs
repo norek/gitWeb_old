@@ -19,11 +19,24 @@ namespace gitWeb.Backend
             {
                 var commitIdToTagLookup = CreateCommitIdToTagLookup(repo);
 
+                //var allbranches = repo.Branches.ToList();
+
                 var filter = new CommitFilter
                 {
                     SortBy = CommitSortStrategies.Topological,
                     IncludeReachableFrom = repo.Refs
                 };
+
+                //var commitsFromBranch = allbranches.SelectMany(d => d.Commits.Select(w => new
+                //{
+                //    w.Message,
+                //    Id = w.Id.ToString(),
+                //    Author = new { w.Author.Name, w.Author.When, w.Author.Email },
+                //    w.MessageShort
+                //}).ToList(), (branch, commit) => new {branchName = branch.FriendlyName,commit.Message,commit.Author,commit.Id,commit.MessageShort}).ToList();
+
+
+
 
                 var commitList = repo.Commits.QueryBy(filter).Select(w => new
                 {
@@ -34,12 +47,12 @@ namespace gitWeb.Backend
                 }).ToList();
 
                 var fullCommitList = (from commit in commitList
-                                       join tag in commitIdToTagLookup on commit.Id equals tag.Key into gj
-                                       from subTag in gj.DefaultIfEmpty()
-                                       select new
+                                      join tag in commitIdToTagLookup on commit.Id equals tag.Key into gj
+                                      from subTag in gj.DefaultIfEmpty()
+                                      select new
                                        {
                                            commit.Message,
-                                           Id = commit.Id.ToString(),
+                                           Id = commit.Id,
                                            Author = new { commit.Author.Name, commit.Author.When, commit.Author.Email },
                                            commit.MessageShort,
                                            tags = subTag?.FirstOrDefault()

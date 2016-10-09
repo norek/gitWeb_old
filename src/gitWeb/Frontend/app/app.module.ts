@@ -10,7 +10,8 @@ import {CommitSearchService} from "./commit/search/commit-search.service";
 import {BranchService} from "./branch/branch.service";
 import {BranchComponent} from "./branch/branch.component";
 import {TagComponent} from "./tag/tag.component";
-
+import {RepositoryService} from './repository/repository.service';
+import {LoaderService} from './shared/loader.service';
 import './rxjs-extensions';
 
 @NgModule({
@@ -26,7 +27,7 @@ import './rxjs-extensions';
         BrowserModule,
         HttpModule
     ],
-    providers: [CommitService, CommitSearchService, BranchService],
+    providers: [CommitService, CommitSearchService, BranchService,RepositoryService,LoaderService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

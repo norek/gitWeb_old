@@ -3,6 +3,7 @@ import {Commit } from "../Git/Model/Commit";
 import {CommitService} from "./commit.service";
 import {Branch} from "../branch/Branch";
 import {BranchService} from "../branch/branch.service";
+import {LoaderService} from "../shared/loader.service";
 
 @Component({
     selector: "commits",
@@ -13,7 +14,7 @@ import {BranchService} from "../branch/branch.service";
 
 
 export class CommitComponent {
-    constructor(private gitService: CommitService, private branchService: BranchService) {
+    constructor(private gitService: CommitService, private branchService: BranchService, private loaderService: LoaderService) {
 
     }
 
@@ -28,10 +29,10 @@ export class CommitComponent {
         this.subscription = this.branchService.currentBranch.subscribe(b => {
             this.currentBranch = b;
 
-            if(b !== undefined){
+            if (b !== undefined) {
                 let currentBranchCommitIndex = this.commits.map(s => s.id).indexOf(b.tipSha);
 
-                if(currentBranchCommitIndex > -1){
+                if (currentBranchCommitIndex > -1) {
                     this.selectedCommit = this.commits[currentBranchCommitIndex];
                 }
             }
@@ -39,9 +40,9 @@ export class CommitComponent {
         });
     }
 
-    ngAfterViewInit() { 
-    //     this.gitgraph = new GitGraph();
-    //     var master = this.gitgraph.branch("master");
+    ngAfterViewInit() {
+        //     this.gitgraph = new GitGraph();
+        //     var master = this.gitgraph.branch("master");
         this.getGitLog();
 
         //changes changes changes
@@ -52,10 +53,11 @@ export class CommitComponent {
     }
 
     getGitLog(): void {
+        this.loaderService.showLoader();
         this.gitService.getLog()
-            .subscribe(s => {
-                this.commits = s;
-                // this.drawGraph();
+            .subscribe(result => {
+                this.commits = result;
+                this.loaderService.hideLoader();
             });
     }
 
