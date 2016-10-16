@@ -6,10 +6,11 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             class Branch {
-                constructor(name, isRemote, tipSha) {
+                constructor(name, isRemote, tipSha, isCurrentRepositoryHead) {
                     this.name = name;
                     this.isRemote = isRemote;
                     this.tipSha = tipSha;
+                    this.isCurrentRepositoryHead = isCurrentRepositoryHead;
                 }
             }
             exports_1("Branch", Branch);

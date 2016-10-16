@@ -13,22 +13,18 @@ namespace gitLibTestingApp
         {
             using (var repo = new Repository(@"C:\Projects\Own\gitWeb"))
             {
-                var filter = new CommitFilter { SortBy = CommitSortStrategies.Topological };
-
-                foreach (Commit c in repo.Commits.QueryBy(filter))
+                foreach (StatusEntry item in repo.RetrieveStatus().OrderBy(d => d.State))
                 {
-                    Tree tree = repo.Lookup<Tree>(c.Sha);
+                    Console.WriteLine("State: " + item.State + " Path: " + item.FilePath);
 
-                    if (tree != null)
-                        foreach (var treeentry in tree)
-                        {
-                        
-                        }
+                    var patch = repo.Diff.Compare<Patch>(new List<string>() { item.FilePath });
+                    Console.WriteLine("~~~~ Patch file ~~~~");
+                    Console.WriteLine(patch.Content);
 
-                    Console.WriteLine(c);   // Of course the output can be prettified ;-)
                 }
-
             }
+
+            Console.ReadLine();
         }
     }
 }

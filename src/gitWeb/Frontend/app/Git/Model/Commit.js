@@ -15,10 +15,12 @@ System.register([], function(exports_1, context_1) {
             }
             exports_1("Commit", Commit);
             class Author {
-                constructor(name, date, email) {
+                constructor(name, date, email, tags, branchName) {
                     this.name = name;
                     this.date = date;
                     this.email = email;
+                    this.tags = tags;
+                    this.branchName = branchName;
                 }
             }
             exports_1("Author", Author);

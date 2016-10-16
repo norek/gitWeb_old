@@ -1,0 +1,28 @@
+<div class="changeDetails">
+	<div class="changesDetailsHeader">
+		<label>{{selectedFileChangeDetail?.filePath}}</label>
+	</div>
+	<div class="hunk" *ngFor="let hunk of selectedFileChangeDetail?.hunks">
+		<div class="hunkHeader">
+			<label>{{hunk.header}}</label>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Content</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let line of hunk?.lines" [class.added]="line.type === 1" [class.removed]="line.type === 2">
+					<td>
+						<div>{{line?.type}}</div>
+					</td>
+					<td>
+						<div>{{line?.content}}</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

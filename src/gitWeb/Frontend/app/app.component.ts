@@ -15,13 +15,15 @@ export class AppComponent implements AfterViewInit, OnInit {
     loader: ILoader;
     inProgress: boolean;
     fileChanges: FileChange[];
-    selectedFileChangeDetail: FileChangeDetail;
+    selectedChange:FileChange;
+    showChanges: boolean;
 
     constructor(public repositoryService: RepositoryService,
         private loaderService: LoaderService,
         private changeService: ChangeService) {
         this.loader = loaderService.loader;
         this.inProgress = false;
+        this.showChanges = false;
     }
 
     ngOnInit() {
@@ -32,16 +34,15 @@ export class AppComponent implements AfterViewInit, OnInit {
         setTimeout(function () {
             componentHandler.upgradeAllRegistered();
         });
+    }
 
-
+    closePreview():void{
+        this.showChanges = false;
     }
 
     onSelect(fileChange: FileChange): void {
-        this.changeService.getFileChange(fileChange.filePath)
-            .subscribe(res => {
-                this.selectedFileChangeDetail = res;
-                // console.log(JSON.stringify(res));
-            });
+        this.selectedChange = fileChange;
+        this.showChanges = true;
     }
 
     fetch(): void {

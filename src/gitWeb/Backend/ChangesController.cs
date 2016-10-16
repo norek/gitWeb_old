@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using gitWeb.Backend.Helpers;
+using gitWeb.Core.ChangeFormatter.ChangeFormatter;
+using gitWeb.Core1.ChangeFormatter.ChangeFormatter;
 using LibGit2Sharp;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,7 +42,19 @@ namespace gitWeb.Backend
             {
                 Patch patch = repo.Diff.Compare<Patch>(new List<string>() { filePath });
 
-                return Ok(new { filePath, content = patch.Content, linesAdded = patch.LinesAdded, linesDeleted = patch.LinesDeleted });
+                ChanageContentFormatter contentFormatter = new ChanageContentFormatter();
+                List<Hunk> formattedContent = contentFormatter.Format(patch.Content);
+
+                var fileChange = new
+                {
+                    filePath,
+                    content = patch.Content,
+                    linesAdded = patch.LinesAdded,
+                    linesDeleted = patch.LinesDeleted,
+                    hunks = formattedContent
+                };
+
+                return Ok(fileChange);
             }
         }
     }

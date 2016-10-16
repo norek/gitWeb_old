@@ -16,7 +16,13 @@
   },
 
   "frameworks": {
-    "net461": { }
+    "net461": {
+        "dependencies": {
+            "gitWeb.Core": {
+                "target": "project"
+            }
+        }
+    }
   },
 
   "buildOptions": {

@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "exports": {
+    "gitWeb.Core/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/gitWeb.Core1.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/gitWeb.Core1.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/gitWeb.Core1.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}

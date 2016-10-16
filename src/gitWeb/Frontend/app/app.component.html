@@ -23,7 +23,9 @@
                 <tag></tag>
             </div>
             <div class="mdl-cell mdl-cell--7-col">
-                <commits></commits>
+
+                <commits [hidden]="showChanges"></commits>
+                <change-detail [hidden]="!showChanges" [change]="selectedChange" ></change-detail>
                 <commit-detail [commit]="selectedCommit"></commit-detail>
             </div>
             <div class="mdl-cell mdl-cell--4-col">
@@ -38,12 +40,11 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let fileChange of fileChanges" (click)="onSelect(fileChange)">
-                            <td>{{fileChange.state}}</td>
-                            <td>{{fileChange.filePath}}</td>
+                            <td>{{fileChange?.state}}</td>
+                            <td>{{fileChange?.filePath}}</td>
                         </tr>
                     </tbody>
                 </table>
-                <p>{{selectedFileChangeDetail|json}}
             </div>
         </div>
     </main>

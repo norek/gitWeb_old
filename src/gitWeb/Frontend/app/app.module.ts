@@ -13,6 +13,7 @@ import {TagComponent} from "./tag/tag.component";
 import {RepositoryService} from './repository/repository.service';
 import {LoaderService} from './shared/loader.service';
 import {ChangeService} from './changes/changes.service';
+import {ChangeDetailComponent} from './changes/change-detail.component';
 
 import './rxjs-extensions';
 
@@ -23,7 +24,8 @@ import './rxjs-extensions';
         CommitComponent,
         CommitSearchComponent,
         BranchComponent,
-        TagComponent
+        TagComponent,
+        ChangeDetailComponent
     ],
     imports: [
         BrowserModule,

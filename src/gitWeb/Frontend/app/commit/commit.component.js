@@ -1,4 +1,4 @@
-System.register(["@angular/core", "./commit.service", "../branch/branch.service"], function(exports_1, context_1) {
+System.register(["@angular/core", "./commit.service", "../branch/branch.service", "../shared/loader.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["@angular/core", "./commit.service", "../branch/branch.service"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, commit_service_1, branch_service_1;
+    var core_1, commit_service_1, branch_service_1, loader_service_1;
     var CommitComponent;
     return {
         setters:[
@@ -22,12 +22,16 @@ System.register(["@angular/core", "./commit.service", "../branch/branch.service"
             },
             function (branch_service_1_1) {
                 branch_service_1 = branch_service_1_1;
+            },
+            function (loader_service_1_1) {
+                loader_service_1 = loader_service_1_1;
             }],
         execute: function() {
             let CommitComponent = class CommitComponent {
-                constructor(gitService, branchService) {
+                constructor(gitService, branchService, loaderService) {
                     this.gitService = gitService;
                     this.branchService = branchService;
+                    this.loaderService = loaderService;
                     this.loggedIn = false;
                 }
                 ngOnInit() {
@@ -35,7 +39,7 @@ System.register(["@angular/core", "./commit.service", "../branch/branch.service"
                         this.currentBranch = b;
                         if (b !== undefined) {
                             let currentBranchCommitIndex = this.commits.map(s => s.id).indexOf(b.tipSha);
-                            if (currentBranchCommitIndex > 0) {
+                            if (currentBranchCommitIndex > -1) {
                                 this.selectedCommit = this.commits[currentBranchCommitIndex];
                             }
                         }
@@ -45,15 +49,17 @@ System.register(["@angular/core", "./commit.service", "../branch/branch.service"
                     //     this.gitgraph = new GitGraph();
                     //     var master = this.gitgraph.branch("master");
                     this.getGitLog();
+                    //changes changes changes
                 }
                 onSelect(commit) {
                     this.selectedCommit = commit;
                 }
                 getGitLog() {
+                    this.loaderService.showLoader();
                     this.gitService.getLog()
-                        .subscribe(s => {
-                        this.commits = s;
-                        // this.drawGraph();
+                        .subscribe(result => {
+                        this.commits = result;
+                        this.loaderService.hideLoader();
                     });
                 }
                 // drawGraph(): void {
@@ -75,7 +81,7 @@ System.register(["@angular/core", "./commit.service", "../branch/branch.service"
                     // template: `<canvas id="gitGraph"></canvas>`,
                     styleUrls: ['app/Styles/commit.component.css']
                 }), 
-                __metadata('design:paramtypes', [commit_service_1.CommitService, branch_service_1.BranchService])
+                __metadata('design:paramtypes', [commit_service_1.CommitService, branch_service_1.BranchService, loader_service_1.LoaderService])
             ], CommitComponent);
             exports_1("CommitComponent", CommitComponent);
         }

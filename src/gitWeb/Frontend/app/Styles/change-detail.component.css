@@ -1,0 +1,40 @@
+.added{
+    background-color: #48643C !important;
+}
+.removed{
+    background-color: #8D6A6A !important;
+}
+
+.hunk{
+    margin: 20px;
+    background-color: #393E3F;
+}
+
+.changeDetails{
+    background-color: #43484B;
+    color: #DEDFDF;
+
+}
+
+.changesDetailsHeader{
+    background-color: #535A5E;
+    padding:  0.7em;
+}
+
+.hunkHeader{
+        background-color: #323637;
+        padding: 0.3em;
+}
+
+table, th, td {
+   /*border: 12px solid black;*/
+    border-collapse: collapse;
+}
+
+th{
+     display:none
+}
+
+th, td {
+    border-bottom: 0px solid;
+}

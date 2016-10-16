@@ -31,6 +31,9 @@ System.register(["@angular/core", "./branch.service"], function(exports_1, conte
                 getBranchList() {
                     this.branchService.getBranchList().subscribe(d => this.branchList = d);
                 }
+                isCurrentRepositoryHead(branch) {
+                    return branch.isCurrentRepositoryHead;
+                }
                 onSelect(branch) {
                     this.selectedBranch = branch;
                     this.branchService.setCurrentBranch(branch);
